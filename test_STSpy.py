@@ -35,7 +35,7 @@ class DatumTest(unittest.TestCase):
         datum = Datum()
 
     def test_factory_methods(self):
-        """Test the class factory methods of the Datum class."""
+        """Test the factory class methods of the Datum class."""
 
         DatumTest.create_data()
 
@@ -49,14 +49,14 @@ class RadioTest(unittest.TestCase):
         radio = Radio()
 
     def test_pack_method_with_invalid_data_type(self):
-        """Test the static pack method with an invalid data type."""
+        """Test the pack static method with an invalid data type."""
 
         datum = Datum(id=0, format=6)
         with self.assertRaises(RuntimeError):
             Radio.pack(datum)
     
     def test_unpack_method_with_invalid_packet_size(self):
-        """Test the static unpack method with an invalid packet size."""
+        """Test the unpack static method with an invalid packet size."""
 
         packet = Radio.pack(Datum.Integer(id=0, timestamp=0, value=0))
         packet[0:1] = bytes([18 | 0x80])
@@ -64,7 +64,7 @@ class RadioTest(unittest.TestCase):
             Radio.unpack(packet)
 
     def test_unpack_method_with_invalid_data_type(self):
-        """Test the static unpack method with an invalid data type."""
+        """Test the unpack static method with an invalid data type."""
 
         packet = Radio.pack(Datum.Integer(id=0, timestamp=0, value=0))
         packet[5:6] = bytes([6])
@@ -72,7 +72,7 @@ class RadioTest(unittest.TestCase):
             Radio.unpack(packet)
     
     def test_round_trip(self):
-        """Test if data round-trip through the static pack and unpack methods."""
+        """Test if data round-trips through the pack and unpack static methods."""
 
         data = DatumTest.create_data()
         for datum in data:
