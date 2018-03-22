@@ -29,6 +29,8 @@ class DatumTest(unittest.TestCase):
     def create_ids():
         """Create a list of STS radio IDs that can be read from STS for testing."""
 
+        return [1090, 1091, 1092, 1093, 1094, 1095]
+
     def test_default_constructor(self):
         """Test the default constructor of the Datum class."""
 
@@ -89,7 +91,7 @@ class RadioTest(unittest.TestCase):
         """Test the receive method by actually retrieving the latest data from STS."""
 
         radio = Radio()
-        ids = [1090, 1091, 1092, 1093, 1094, 1095]
+        ids = DatumTest.create_ids()
         data = radio.receive(ids)
 
 
