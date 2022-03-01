@@ -10,7 +10,7 @@ class Radio(object):
     """A class to communicate with the STS board (STS radio)."""
 
     # Default STS server IP address and STS board TCP port number
-    HOST = 'localhost'
+    HOST = '133.40.160.114'
     PORT = 9001
 
     # Default timeout (seconds)
