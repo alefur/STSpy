@@ -44,9 +44,14 @@ alertPath = '/software/ait/alarm/packets.pickle'
 
 
 def savePacket(packet, filepath=alertPath):
-    packets = unPickle(filepath)
-    packets.append(packet)
-    doPickle(filepath, packets)
+    def stsId(packet):
+        """get stsId from packet"""
+        return Radio.unpack(packet).id
+
+    packetsDict = dict([(stsId(pck), pck) for pck in unPickle(filepath)])
+    packetsDict[stsId(packet)] = packet
+
+    doPickle(filepath, list(packetsDict.values()))
 
 
 def unPickle(filepath):
