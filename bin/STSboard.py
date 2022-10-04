@@ -40,7 +40,7 @@ from socketserver import TCPServer, BaseRequestHandler
 
 from STSpy.radio import Radio
 
-alertPath = '/software/ait/alarm/packets.pickle'
+alertPath = '/software/ait/alerts/packets.pickle'
 
 
 def savePacket(packet, filepath=alertPath):
